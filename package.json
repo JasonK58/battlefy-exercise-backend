@@ -1,0 +1,19 @@
+{
+  "name": "battlefy-exercise-backend",
+  "version": "1.0.0",
+  "description": "Backend for interview exercise",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonK58/battlefy-exercise-backend.git"
+  },
+  "author": "Jason Kolenosky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasonK58/battlefy-exercise-backend/issues"
+  },
+  "homepage": "https://github.com/JasonK58/battlefy-exercise-backend#readme"
+}
