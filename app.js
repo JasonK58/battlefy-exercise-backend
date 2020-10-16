@@ -4,7 +4,22 @@ const LeagueJS = require('leaguejs/lib/LeagueJS.js');
 
 const app = express();
 const port = process.env.PORT;
+const origins = process.env.ORIGINS.split(';')
 const leagueJs = new LeagueJS(process.env.API_TOKEN);
+
+app.use(function (req, res, next) {
+	var origin = req.get('origin');
+	
+	if (origins.includes(origin)) {
+		res.setHeader('Access-Control-Allow-Origin', origin);
+	}
+	
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    next();
+});
 
 app.get('/', function(req, res) {
 	res.status(200);
