@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-	"start": "node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JasonK58/battlefy-exercise-backend#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "leaguejs": "^2.1.3"
   }
 }
