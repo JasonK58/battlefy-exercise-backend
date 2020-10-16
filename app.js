@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const LeagueJS = require('leaguejs');
+const LeagueJS = require('leaguejs/lib/LeagueJS.js');
 
 const app = express();
 const port = process.env.PORT;
@@ -17,16 +17,15 @@ app.get('/test', function(req, res) {
 });
 
 app.get('/summoner', function(req, res) {
+	var summonerName = req.query.name;
+	
 	var gameArray = [];
-	var summonerName;
 	var gameDuration;
 	var participantId;
-	
-	leagueJs.Summoner.gettingByName('Doublelift')
+
+	leagueJs.Summoner.gettingByName(summonerName)
 	.then(summoner => {
-		summonerName = summoner.name;
-		
-		return leagueJs.Match.gettingListByAccount(summoner.accountId, {beginIndex: 0, endIndex: 1});
+		return leagueJs.Match.gettingListByAccount(summoner.accountId, {beginIndex: 0, endIndex: 5});
 	})
 	.then(matchList => {
 		matchList.matches.forEach(matchElement => {
@@ -69,14 +68,12 @@ app.get('/summoner', function(req, res) {
 					};
 				});
 			})
+			.then(() => {
+				res.status(200);
+				res.json({games: gameArray})
+			})
 		})
-		
 	})
-	.then(() => {
-		res.status(200);
-		res.json({games: gameArray})
-	})
-	
 });
 
 app.listen(port);
